@@ -1,3 +1,5 @@
+package ru.vsu.math.java;
+
 public class Tutor {
   private String fullName;
 

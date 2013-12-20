@@ -1,3 +1,5 @@
+package ru.vsu.math.java;
+
 public class Seeder {
     public static void createData(Application app){
       String array[];

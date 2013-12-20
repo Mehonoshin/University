@@ -1,3 +1,4 @@
+package ru.vsu.math.java;
 import java.util.*;
 
 public class Application {

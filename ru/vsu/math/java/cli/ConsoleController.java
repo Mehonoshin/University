@@ -1,3 +1,6 @@
+package ru.vsu.math.java.cli;
+import ru.vsu.math.java.*;
+
 public class ConsoleController {
   private Application app;
   private ConsoleReader reader;

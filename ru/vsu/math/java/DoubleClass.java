@@ -1,3 +1,5 @@
+package ru.vsu.math.java;
+
 public class DoubleClass {
   private Integer groupId;
   private Integer weekday;

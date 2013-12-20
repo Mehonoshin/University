@@ -1,3 +1,5 @@
+package ru.vsu.math.java.cli;
+import ru.vsu.math.java.*;
 import java.util.*;
 
 public class ConsoleWriter {

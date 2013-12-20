@@ -1,4 +1,6 @@
-public class Student extends FileRecord{
+package ru.vsu.math.java;
+
+public class Student extends FileRecord {
   private String fullName;
   private Integer studentId;
   private Integer groupId;

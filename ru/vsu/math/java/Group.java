@@ -1,3 +1,5 @@
+package ru.vsu.math.java;
+
 public class Group {
   private Integer courseNumber;
   private Integer groupNumber;
