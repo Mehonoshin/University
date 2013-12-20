@@ -13,7 +13,7 @@ public class Student extends FileRecord {
 
   @Override
   protected String dataToSave() {
-    return this.fullName + "|" + this.groupId + "|" + this.studentId;
+    return this.fullName + "|" + this.groupId + "|" + this.studentId + "\n";
   }
 
   protected String filename() {

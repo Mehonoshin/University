@@ -1,6 +1,7 @@
 package ru.vsu.math.java;
 import ru.vsu.math.java.entity.*;
 import java.util.*;
+import java.io.*;
 
 public class Application {
   private List<Student> students = new ArrayList<Student>();
@@ -14,7 +15,7 @@ public class Application {
   public void addStudent(String fullName, Integer studentId, Integer groupId) {
     Student student = new Student(fullName, studentId, groupId);
     students.add(student);
-    student.save();
+    //student.save();
   }
 
   public void addTutor(String fullName) {
@@ -42,7 +43,16 @@ public class Application {
   }
 
   private void loadStudents() {
-    // Читаем из файла все записи
-    // Для каждой создаем студента
+    try {
+      RandomAccessFile file = new RandomAccessFile("students.txt", "rw");
+      long pointer = 0;
+      file.seek(pointer);
+      while (pointer < file.length()) {
+        System.out.println(file.readUTF());
+      }
+    } catch(EOFException e) {
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
   }
 }
