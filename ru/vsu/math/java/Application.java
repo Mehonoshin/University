@@ -1,4 +1,5 @@
 package ru.vsu.math.java;
+import ru.vsu.math.java.entity.*;
 import java.util.*;
 
 public class Application {

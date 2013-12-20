@@ -1,4 +1,4 @@
-package ru.vsu.math.java;
+package ru.vsu.math.java.entity;
 
 public class Student extends FileRecord {
   private String fullName;

@@ -1,4 +1,4 @@
-package ru.vsu.math.java;
+package ru.vsu.math.java.entity;
 import java.io.*;
 
 public abstract class FileRecord implements Savable {

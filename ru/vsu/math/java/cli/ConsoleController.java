@@ -1,5 +1,6 @@
 package ru.vsu.math.java.cli;
 import ru.vsu.math.java.*;
+import ru.vsu.math.java.entity.*;
 
 public class ConsoleController {
   private Application app;
