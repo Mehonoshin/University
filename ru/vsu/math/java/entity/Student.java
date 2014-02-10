@@ -1,19 +1,27 @@
 package ru.vsu.math.java.entity;
+import ru.vsu.math.java.entity.Group;
 
 public class Student extends FileRecord {
+  public static int nextStudentId = 1;
   private String fullName;
   private Integer studentId;
-  private Integer groupId;
+  private Group group;
 
-  public Student(String fullName, Integer studentId, Integer groupId) {
+  public static int getNewStudentId() {
+    int id = Student.nextStudentId;
+    Student.nextStudentId++;
+    return id;
+  }
+
+  public Student(String fullName, Group group) {
     this.fullName = fullName;
-    this.studentId = studentId;
-    this.groupId = groupId;
+    this.studentId = Student.getNewStudentId();
+    this.group = group;
   };
 
   @Override
   protected String dataToSave() {
-    return this.fullName + "|" + this.groupId + "|" + this.studentId + "\n";
+    return this.fullName + "|" + this.group.toString() + "|" + this.studentId + "\n";
   }
 
   protected String filename() {
@@ -33,14 +41,14 @@ public class Student extends FileRecord {
   }
 
   public void setStudentId(Integer studentId) {
-      this.studentId = studentId;
+    this.studentId = studentId;
   }
 
-  public Integer getGroupId() {
-    return this.studentId;
+  public Group getGroup() {
+    return this.group;
   }
 
-  public void setGroupId(Integer groupId) {
-    this.groupId = groupId;
+  public void setGroup(Group group) {
+    this.group = group;
   }
 }

@@ -1,24 +1,26 @@
 package ru.vsu.math.java;
+import ru.vsu.math.java.entity.Group;
 
 public class Seeder {
     public static void createData(Application app){
       String array[];
 
-      app.addStudent("Соловьев Дмитрий Николаевич", null, null);
-      app.addStudent("Савенков Михаил Владиславович", null, null);
-      app.addStudent("Новоселов Антон Григорьевич", null, null);
-      app.addStudent("Шипилов Алексей Владимирович", null, null);
-      app.addStudent("Шилин Семен Иванович", null, null);
-      app.addStudent("Микляев Владислав Иванович", null, null);
-      app.addStudent("Измайлова Марина Анатольевна", null, null);
-      app.addStudent("Щеблыкина Ирина Владимировна", null, null);
-      app.addStudent("Кольцова Карелия Бенедиктовна", null, null);
-      app.addStudent("Ляхов Владислав Иванович", null, null);
+      Group group = app.addGroup(2, 3, 2);
+
+      app.createStudent("Соловьев Дмитрий Николаевич", group);
+      app.createStudent("Савенков Михаил Владиславович", group);
+      app.createStudent("Новоселов Антон Григорьевич", group);
+      app.createStudent("Шипилов Алексей Владимирович", group);
+      app.createStudent("Шилин Семен Иванович", group);
+      app.createStudent("Микляев Владислав Иванович", group);
+      app.createStudent("Измайлова Марина Анатольевна", group);
+      app.createStudent("Щеблыкина Ирина Владимировна", group);
+      app.createStudent("Кольцова Карелия Бенедиктовна", group);
+      app.createStudent("Ляхов Владислав Иванович", group);
 
       app.addTutor("Прядко Ирина Николаевна");
       app.addTutor("Бахтина Жанна Игоревна");
       app.addTutor("Зубова Светлана Петровна");
 
-      app.addGroup(2, 3, 2);
     };
 }

@@ -12,18 +12,24 @@ public class Application {
     loadCollections();
   }
 
-  public void addStudent(String fullName, Integer studentId, Integer groupId) {
-    Student student = new Student(fullName, studentId, groupId);
+  public void createStudent(String fullName, Group group) {
+    addStudent(fullName, group).save();
+  }
+
+  public Student addStudent(String fullName, Group group) {
+    Student student = new Student(fullName, group);
     students.add(student);
-    //student.save();
+    return student;
   }
 
   public void addTutor(String fullName) {
     tutors.add(new Tutor(fullName));
   }
 
-  public void addGroup(Integer courseNumber, Integer groupNumber, Integer subGroupNumber) {
-    groups.add(new Group(courseNumber, groupNumber, subGroupNumber));
+  public Group addGroup(Integer courseNumber, Integer groupNumber, Integer subGroupNumber) {
+    Group group = new Group(courseNumber, groupNumber, subGroupNumber);
+    groups.add(group);
+    return group;
   }
 
   public List getStudents() {
@@ -47,10 +53,14 @@ public class Application {
       RandomAccessFile file = new RandomAccessFile("students.txt", "rw");
       long pointer = 0;
       file.seek(pointer);
+
       while (pointer < file.length()) {
-        System.out.println(file.readUTF());
+        String studentLine = file.readUTF();
+        String[] data = studentLine.split("\\|");
+        addStudent(data[0], null);
       }
     } catch(EOFException e) {
+      e.printStackTrace();
     } catch(IOException e) {
       e.printStackTrace();
     }

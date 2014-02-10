@@ -13,7 +13,7 @@ public class ConsoleWriter {
   public void displayStudents() {
     List<Student> students = app.getStudents();
     for(Student student : students) {
-      System.out.println(student.getFullName());
+      System.out.println(student.getStudentId() + " - " + student.getFullName());
     }
   }
 

@@ -6,9 +6,9 @@ public class Group {
   private Integer subGroupNumber;
 
   public Group(Integer courseNumber, Integer groupNumber, Integer subGroupNumber) {
-    this.courseNumber=courseNumber;
-    this.groupNumber=groupNumber;
-    this.subGroupNumber=subGroupNumber;
+    this.courseNumber = courseNumber;
+    this.groupNumber = groupNumber;
+    this.subGroupNumber = subGroupNumber;
   }
 
   public Integer getCourseNumber() {
@@ -33,5 +33,9 @@ public class Group {
 
   public void setSubGroupNumber(Integer subGroupNumber) {
     this.courseNumber = subGroupNumber;
+  }
+
+  public String toString() {
+    return this.courseNumber + "." + this.groupNumber + "." + this.subGroupNumber;
   }
 }
