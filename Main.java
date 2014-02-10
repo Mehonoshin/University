@@ -4,7 +4,7 @@ import ru.vsu.math.java.*;
 
 public class Main {
   public static void main(String[] args) {
-    Application app = new Application();
+    Application app = Application.getInstance();
     Seeder.createData(app);
 
     ConsoleController consoleController = new ConsoleController(app);

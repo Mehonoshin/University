@@ -8,6 +8,14 @@ public class Application {
   private List<Group> groups = new ArrayList<Group>();
   private List<Tutor> tutors = new ArrayList<Tutor>();
 
+  public static Application instance;
+  public static Application getInstance() {
+    if (instance == null) {
+      instance = new Application();
+    }
+    return instance;
+  }
+
   public Application() {
     loadCollections();
   }
@@ -49,20 +57,6 @@ public class Application {
   }
 
   private void loadStudents() {
-    try {
-      RandomAccessFile file = new RandomAccessFile("students.txt", "rw");
-      long pointer = 0;
-      file.seek(pointer);
-
-      while (pointer < file.length()) {
-        String studentLine = file.readUTF();
-        String[] data = studentLine.split("\\|");
-        addStudent(data[0], null);
-      }
-    } catch(EOFException e) {
-      e.printStackTrace();
-    } catch(IOException e) {
-      e.printStackTrace();
-    }
+    //Student.loadCollection(this);
   }
 }
