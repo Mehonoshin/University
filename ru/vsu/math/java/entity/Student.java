@@ -1,5 +1,6 @@
 package ru.vsu.math.java.entity;
 import ru.vsu.math.java.entity.Group;
+import ru.vsu.math.java.*;
 
 public class Student extends FileRecord {
   public static int nextStudentId = 1;
@@ -22,6 +23,11 @@ public class Student extends FileRecord {
   @Override
   protected String dataToSave() {
     return this.fullName + "|" + this.group.toString() + "|" + this.studentId + "\n";
+  }
+
+  @Override
+  protected void buildObject(String[] data) {
+    Application.getInstance().addStudent(data[0], null);
   }
 
   protected String filename() {

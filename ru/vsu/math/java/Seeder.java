@@ -18,8 +18,12 @@ public class Seeder {
 
       Group group = app.addGroup(2, 3, 2);
 
-      for (String name : studentNames) {
-        app.createStudent(name, group);
+      // Создаем студентов, только если их список пуст
+      // A cписок бывает пустым только когда в файле ничего нет
+      if (app.getStudents().isEmpty()) {
+        for (String name : studentNames) {
+          app.createStudent(name, group);
+        }
       }
 
       app.addTutor("Прядко Ирина Николаевна");

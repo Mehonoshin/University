@@ -4,6 +4,24 @@ import java.io.*;
 public abstract class FileRecord implements Savable {
   protected abstract String filename();
   protected abstract String dataToSave();
+  protected abstract void buildObject(String[] data);
+
+  public void loadCollection() {
+    try {
+      RandomAccessFile file = new RandomAccessFile(filename(), "rw");
+      long pointer = 0;
+      file.seek(pointer);
+
+      while (pointer < file.length()) {
+        String dataLine = file.readUTF();
+        String[] data = dataLine.split("\\|");
+        buildObject(data);
+      }
+    } catch(EOFException e) {
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
+  }
 
   public void save() {
     File file = new File(filename());
@@ -21,8 +39,5 @@ public abstract class FileRecord implements Savable {
     } catch(IOException e) {
       e.printStackTrace();
     }
-  }
-
-  public void delete() {
   }
 }

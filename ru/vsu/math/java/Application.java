@@ -8,16 +8,16 @@ public class Application {
   private List<Group> groups = new ArrayList<Group>();
   private List<Tutor> tutors = new ArrayList<Tutor>();
 
-  public static Application instance;
+  private static Application instance = null;
   public static Application getInstance() {
     if (instance == null) {
       instance = new Application();
+      instance.loadCollections();
     }
     return instance;
   }
 
-  public Application() {
-    loadCollections();
+  protected Application() {
   }
 
   public void createStudent(String fullName, Group group) {
@@ -57,6 +57,9 @@ public class Application {
   }
 
   private void loadStudents() {
-    //Student.loadCollection(this);
+    // Грязный трюк, так делать не надо
+    // напомнить объяснить почему
+    Student studentLoader = new Student(null, null);
+    studentLoader.loadCollection();
   }
 }
