@@ -1,38 +1,18 @@
 package ru.vsu.math.java.entity;
 import ru.vsu.math.java.entity.Group;
 import ru.vsu.math.java.*;
+import java.sql.*;
 
-public class Student extends FileRecord {
-  public static int nextStudentId = 1;
+public class Student extends SQLRecord {
   private String fullName;
   private Integer studentId;
   private Group group;
 
-  public static int getNewStudentId() {
-    int id = Student.nextStudentId;
-    Student.nextStudentId++;
-    return id;
-  }
-
   public Student(String fullName, Group group) {
     this.fullName = fullName;
-    this.studentId = Student.getNewStudentId();
+    this.studentId = 1;
     this.group = group;
   };
-
-  @Override
-  protected String dataToSave() {
-    return this.fullName + "|" + this.group.toString() + "|" + this.studentId + "\n";
-  }
-
-  @Override
-  protected void buildObject(String[] data) {
-    Application.getInstance().addStudent(data[0], null);
-  }
-
-  protected String filename() {
-    return "students.txt";
-  }
 
   public String getFullName() {
     return this.fullName;
@@ -46,15 +26,35 @@ public class Student extends FileRecord {
     return this.studentId;
   }
 
-  public void setStudentId(Integer studentId) {
-    this.studentId = studentId;
-  }
-
   public Group getGroup() {
     return this.group;
   }
 
   public void setGroup(Group group) {
     this.group = group;
+  }
+
+  @Override
+  protected String tableName() {
+    return "students";
+  }
+
+  @Override
+  protected String columnNames() {
+    return "(fullname, group_id)";
+  }
+
+  @Override
+  protected String values() {
+    return "('" + fullName + "', 1)";
+  }
+
+  @Override
+  protected void buildObject(ResultSet row) {
+    try {
+      Application.getInstance().addStudent(row.getString("fullname"), null);
+    } catch(SQLException e) {
+      e.printStackTrace();
+    }
   }
 }

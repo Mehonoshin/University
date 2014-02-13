@@ -9,16 +9,15 @@ public class Seeder {
   };
 
   public static void createTables() {
-    String dbName = SQLRecord.dbName;
     try {
       Class.forName("org.h2.Driver");
       Connection conn = DriverManager.
-          getConnection("jdbc:h2:~/" + dbName, "sa", "");
+          getConnection("jdbc:h2:~/" + SQLRecord.dbName, "sa", "");
 
       String[] table_schemas = {
         "create table " +
         "students" +
-        "(id integer NOT NULL, " +
+        "(id integer auto_increment NOT NULL, " +
         "fullname varchar(255) NOT NULL, " +
         "group_id integer NOT NULL, " +
         "PRIMARY KEY (id))",
